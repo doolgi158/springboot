@@ -44,7 +44,7 @@ public class ExampleController {
         return "example/exam04";
     }
 
-    @GetMapping("/text")
+    @GetMapping("/test")
     public String test(Model model) {
         model.addAttribute("data1", "뷰에 출력할 데이터");
         model.addAttribute("data2", "뷰에 출력할 <strong>데이터</strong>");
@@ -59,7 +59,7 @@ public class ExampleController {
         exampleDTO.setName("홍길동");
         exampleDTO.setAge(38);
         exampleDTO.setEmail("javauser@naver.com");
-        model.addAttribute("examplpeDTO", exampleDTO);
+        model.addAttribute("exampleDTO", exampleDTO);
 
         List<ExampleDTO> list = new ArrayList<>();
         list.add(new ExampleDTO("김철수", 26, "springguser@naver.com"));
