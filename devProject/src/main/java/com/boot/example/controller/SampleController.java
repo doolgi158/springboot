@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/sample")
 public class SampleController {
@@ -20,5 +25,24 @@ public class SampleController {
     @GetMapping("/getExample")
     public ExampleVO getSample(){
         return new ExampleVO(1, "홍길동", "010-1234-9087");
+    }
+
+    @GetMapping("/getList")
+    public List<ExampleVO> getList() {
+        List<ExampleVO> list = new ArrayList<>();
+        list.add(new ExampleVO(1, "홍길동", "010-6703-1209"));
+        list.add(new ExampleVO(2, "한늘봄", "010-9427-8930"));
+        list.add(new ExampleVO(3, "이진희", "010-1295-4510"));
+        list.add(new ExampleVO(4, "박철희", "010-3492-6711"));
+
+        return list;
+    }
+
+    @GetMapping(value = "/getMap", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Map<String, ExampleVO> getMap() {
+        Map<String, ExampleVO> map = new HashMap<>();
+        map.put("First", new ExampleVO(5, "이진수", "010-2356-3390"));
+
+        return map;
     }
 }

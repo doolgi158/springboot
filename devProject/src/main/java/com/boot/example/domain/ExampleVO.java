@@ -10,7 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ExampleVO {
-    int no;
-    String name;
-    String phone;
+    private int no;
+    private String name;
+    private String phone;
 }
