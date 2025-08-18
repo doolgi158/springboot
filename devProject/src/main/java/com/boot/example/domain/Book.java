@@ -1,6 +1,7 @@
 package com.boot.example.domain;
 
 import lombok.*;
+import org.springframework.web.ErrorResponse;
 
 @Setter
 @Getter
