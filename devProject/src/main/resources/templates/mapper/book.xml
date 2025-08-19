@@ -20,4 +20,8 @@
         INSERT INTO BOOK (TITLE, AUTHOR, PUBLISHER, PUBLISH_DATE, PRICE)
         VALUES (#{title}, #{author}, #{publisher}, #{publishDate}, #{price})
     </insert>
+
+    <delete id="bookDelete" parameterType="com.boot.example.domain.Book">
+        DELETE FROM BOOK WHERE BOOK_ID = #{bookId}
+    </delete>
 </mapper>
