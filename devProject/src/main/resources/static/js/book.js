@@ -26,3 +26,12 @@ document.addEventListener('click', (event) => {
         }
     }
 });
+
+document.addEventListener('click', (event) => {
+    if(event.target.classList.contains('updateBtn')) {
+        event.preventDefault();
+
+        const row = event.target.closest('tr');
+        const number = row.querySelector('th[scope="row"]').textContent.trim();
+    }
+});

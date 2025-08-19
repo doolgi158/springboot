@@ -24,4 +24,9 @@
     <delete id="bookDelete" parameterType="com.boot.example.domain.Book">
         DELETE FROM BOOK WHERE BOOK_ID = #{bookId}
     </delete>
+
+    <update id="bookUpdate" parameterType="com.boot.example.domain.Book">
+        UPDATE BOOK SET TITLE = #{title}, AUTHOR = #{author}, PUBLISHER = #{publisher}, PUBLISH_DATE = #{publishDate}, PRICE = #{price}
+        WHERE BOOK_ID = #{bookId}
+    </update>
 </mapper>

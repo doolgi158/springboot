@@ -37,4 +37,10 @@ public class BookController {
         bookService.bookDelete(book);
         return "redirect:/book/bookList";
     }
+
+    @GetMapping("/bookUpdate")
+    public String bookUpdate(@ModelAttribute Book book) {
+        bookService.bookUpdate(book);
+        return "redirect:/book/bookList";
+    }
 }
