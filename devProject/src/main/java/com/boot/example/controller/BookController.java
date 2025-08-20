@@ -38,7 +38,7 @@ public class BookController {
         return "redirect:/book/bookList";
     }
 
-    @GetMapping("/bookUpdate")
+    @PostMapping("/bookUpdate")
     public String bookUpdate(@ModelAttribute Book book) {
         bookService.bookUpdate(book);
         return "redirect:/book/bookList";

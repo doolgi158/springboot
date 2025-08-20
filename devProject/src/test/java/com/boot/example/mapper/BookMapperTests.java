@@ -45,6 +45,6 @@ public class BookMapperTests {
                 .price(18900)
                 .bookId(23).build();
         int result = bookMapper.bookUpdate(book);
-        log.info("적용된 행의 수: {}", result);
+        log.info("수정된 행의 수: {}", result);
     }
 }

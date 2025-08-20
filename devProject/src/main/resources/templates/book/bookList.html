@@ -39,7 +39,7 @@
                         <td th:text="*{publishDate}"></td>
                         <td th:text="*{price}"></td>
                         <td><a href="#" class="deleteBtn link-danger link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">삭제</a></td>
-                        <td><a href="#" class="updateBtn link-notice link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">수정</a></td>
+                        <td><a href="#" class="updateFormBtn link-success link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">수정</a></td>
                     </tr>
                 </th:block>
                 </tbody>
@@ -49,6 +49,7 @@
         <div class="row">
             <div class="text-center"><h5>책정보 등록</h5></div>
             <form id="insertForm" th:object="${book}">
+                <input type="hidden" th:field="*{bookId}">
                 <div class="mb-3 row">
                     <label for="title" class="col-sm-3 col-form-label">책제목</label>
                     <div class="col-sm-9">
@@ -80,8 +81,7 @@
                     </div>
                 </div>
                 <div class="text-end">
-                    <button type="button" class="btn btn-primary btn-sm" id="updateBtn">책정보수정</button>
-                    <button type="button" class="btn btn-primary btn-sm" id="insertBtn">책정보등록</button>
+                    <button type="button" class="btn btn-primary btn-sm" id="insertBtn">입력완료</button>
                     <button type="button" class="btn btn-primary btn-sm" id="cancelBtn">다시입력</button>
                 </div>
             </form>
