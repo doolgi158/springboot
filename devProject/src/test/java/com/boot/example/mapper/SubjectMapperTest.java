@@ -7,17 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @Slf4j
-public class StudentMapperTests {
-
+public class SubjectMapperTest {
     @Autowired
-    private StudentMapper studentMapper;
+    private SubjectMapper subjectMapper;
 
     @Test
-    public void StudentListTest() {
-        studentMapper.studentList().stream().forEach((student -> log.info(student.toString())));
-    }
-
-    public void studentCheck() {
-
+    public void subjectListTest() {
+        subjectMapper.subjectList().stream().forEach(subject -> log.info(subject.toString()));
     }
 }

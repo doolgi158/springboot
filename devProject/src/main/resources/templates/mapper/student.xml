@@ -18,6 +18,6 @@
     <select id="studentList" resultMap="studentResult">
         SELECT NO, SD_NUM, SD_NAME, SD_ID, SD_PASSWD, S_NUM, SD_BIRTH, SD_PHONE, SD_ADDRESS, SD_EMAIL, SD_DATE
         FROM STUDENT
-        ORDER BY NO DESC
+        ORDER BY NO
     </select>
 </mapper>
