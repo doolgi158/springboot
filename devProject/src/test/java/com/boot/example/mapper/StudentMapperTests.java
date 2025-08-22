@@ -16,8 +16,4 @@ public class StudentMapperTests {
     public void StudentListTest() {
         studentMapper.studentList().stream().forEach((student -> log.info(student.toString())));
     }
-
-    public void studentCheck() {
-
-    }
 }

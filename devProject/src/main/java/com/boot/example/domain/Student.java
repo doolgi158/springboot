@@ -2,6 +2,8 @@ package com.boot.example.domain;
 
 import lombok.*;
 
+import java.sql.Date;
+
 @Setter
 @Getter
 @AllArgsConstructor
@@ -10,14 +12,15 @@ import lombok.*;
 @Builder
 public class Student {
     private int no;
-    private String studentNum;
+    private String studentNumber;
     private String studentName;
     private String studentId;
     private String studentPasswd;
-    private String subjectNum;
     private String studentBirth;
     private String studentPhone;
     private String studentAddress;
     private String studentEmail;
-    private String studentDate;
+    private Date regDate;
+
+    private Subject subject;
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.boot.example.mapper.StudentMapper">
-    <resultMap id="studentResult" type="com.boot.example.domain.Student">
+    <!--<resultMap id="studentResult" type="com.boot.example.domain.Student">
         <id column="no" property="no" />
         <result column="sd_num" property="studentNum" />
         <result column="sd_name" property="studentName" />
@@ -19,5 +19,5 @@
         SELECT NO, SD_NUM, SD_NAME, SD_ID, SD_PASSWD, S_NUM, SD_BIRTH, SD_PHONE, SD_ADDRESS, SD_EMAIL, SD_DATE
         FROM STUDENT
         ORDER BY NO
-    </select>
+    </select>-->
 </mapper>
