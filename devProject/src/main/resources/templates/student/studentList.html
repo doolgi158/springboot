@@ -11,9 +11,9 @@
     <div class="text-center"><h3>학생 테이블 조회 및 입력</h3></div>
     <div class="row">
         <div class="text-center"><h5>학생 테이블 조회</h5></div>
-        <table class="table table-hover">
+        <table class="table table-hover table-striped ">
             <thead>
-            <tr>
+            <tr class="text-center">
                 <th scope="col">번호</th>
                 <th scope="col">학생번호</th>
                 <th scope="col">학과명</th>
@@ -23,31 +23,113 @@
                 <th scope="col">전화번호</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">주소</th>
-                <th scope="col">등록날짜</th>
+                <th scope="col">등록일</th>
             </tr>
             </thead>
             <tbody class="table-group-divider">
-            <th:block th:if="${#strings.isEmpty(studentList)}">
-                <tr>
-                    <td colspan="11">등록된 학생 정보가 존재하지 않습니다</td>
-                </tr>
-            </th:block>
-            <th:block th:if="${not #strings.isEmpty(studentList)}">
-                <tr class="text-left" th:each="student : ${studentList}" th:object="${student}">
-                    <th scope="row" th:text="*{no}"></th>
-                    <td th:text="*{studentNumber}"></td>
-                    <td th:text="*{subject.subjectName}"></td>
-                    <td th:text="*{studentName}"></td>
-                    <td th:text="*{studentId}"></td>
-                    <td th:text="*{studentBirth}"></td>
-                    <td th:text="*{studentPhone}"></td>
-                    <td th:text="*{studentEmail}"></td>
-                    <td th:text="*{studentAddress}"></td>
-                    <td th:text="*{#dates.format(regDate, 'yyyy-MM-dd')}"></td>
-                </tr>
-            </th:block>
+                <th:block th:if="${#strings.isEmpty(studentList)}">
+                    <tr>
+                        <td colspan="10">등록된 학생 정보가 존재하지 않습니다</td>
+                    </tr>
+                </th:block>
+                <th:block th:if="${not #strings.isEmpty(studentList)}">
+                    <tr class="text-start" th:each="student : ${studentList}" th:object="${student}">
+                        <th scope="row" th:text="*{no}"></th>
+                        <td th:text="*{studentNumber}"></td>
+                        <td th:text="*{subject.subjectName}"></td>
+                        <td th:text="*{studentName}"></td>
+                        <td th:text="*{studentId}"></td>
+                        <td th:text="*{studentBirth}"></td>
+                        <td th:text="*{studentPhone}"></td>
+                        <td th:text="*{studentEmail}"></td>
+                        <td th:text="*{studentAddress}"></td>
+                        <td th:text="*{#dates.format(regDate, 'yyyy-MM-dd')}"></td>
+                    </tr>
+                </th:block>
             </tbody>
         </table>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="text-center"><h5>학생테이블 등록</h5></div>
+            <form id="insertForm" th:object="${student}">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td>학생번호</td>
+                            <td class="text-start">
+                            <input type="text" class="form-control" th:field="*{studentNumber}" placeholder="학과선택시 자동부여" readonly="readonly" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학과명</td>
+                        <td class="text-start">
+                            <select class="form-select form-select-sm" aria-label="Small select example" name="subject.subjectNumber" id="subjectNumber">
+                                <option value="">학과 선택해 주세요</option>
+                                <option th:each="subject : ${subjectList}" th:value="${subject.subjectNumber}" th:text="${subject.subjectName}"></option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생이름</td>
+                        <td class="text-start">
+                            <input type="text" class="form-control" th:field="*{studentName}" placeholder="학생명 입력" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생아이디</td>
+                        <td class="text-start">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{studentId}" placeholder="학생아이디 입력" />
+                                </div>
+                                <button type="button" id="idCheck" class="btn btn-success btn-sm col-sm-1">중복검사</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생 비밀번호</td>
+                        <td class="text-start">
+                            <input type="password" class="form-control" th:field="*{studentPasswd}" placeholder="비밀번호 입력" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생 생년월일</td>
+                        <td class="text-start">
+                            <input type="text" class="form-control" th:field="*{studentBirth}" placeholder="학생 생년월일 입력" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생 전화번호</td>
+                        <td class="text-start">
+                            <input type="text" class="form-control" th:field="*{studentPhone}" placeholder="학생 전화번호 입력"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생 주소</td>
+                        <td class="text-start">
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" th:field="*{studentAddress}" placeholder="학생 주소 입력" />
+                                </div>
+                                <button type="button" id="postCode" class="btn btn-success btn-sm col-sm-1">주소검색</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>학생 이메일</td>
+                        <td class="text-start">
+                            <input type="text" class="form-control" th:field="*{studentEmail}" placeholder="학생 이메일 입력" />
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="text-end">
+                    <button type="button" class="btn btn-success btn-sm" id="insertBtn">학생정보등록</button>
+                    <button type="button" class="btn btn-success btn-sm" id="cancelBtn">다시입력</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

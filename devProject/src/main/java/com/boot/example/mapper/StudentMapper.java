@@ -1,10 +1,7 @@
 package com.boot.example.mapper;
 
 import com.boot.example.domain.Student;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -30,4 +27,32 @@ public interface StudentMapper {
             ORDER BY ST.NO
     """)
     public List<Student> studentList();
+
+    @Select("""
+            SELECT TO_CHAR(SYSDATE, 'YY') || S.S_NUM ||
+                LPAD(NVL(MAX(TO_NUMBER(SUBSTR(ST.SD_NUM, 5))), 0) + 1, 4, '0') AS student_number
+            FROM SUBJECT S LEFT JOIN STUDENT ST
+            ON S.S_NUM = ST.S_NUM
+            WHERE S.S_NUM = #{subjectNumber}
+            GROUP BY S.S_NUM
+            """)
+    public String studentAutoNumber(@Param("subjectNumber") String subjectNumber);
+
+    @Select("""
+            SELECT CASE
+                    WHEN EXISTS (SELECT 1 FROM STUDENT WHERE SD_ID = #{studentId})
+                    THEN 1
+                    ELSE 0
+                END AS RESULT
+            FROM DUAL
+            """)
+    public int studentIdCheck(@Param("studentId") String studentId);
+
+    @Insert("""
+            INSERT INTO STUDENT(NO, SD_NUM, SD_NAME, SD_ID, SD_PASSWD, S_NUM, SD_BIRTH, SD_PHONE, SD_ADDRESS, SD_EMAIL)
+            VALUES(STUDENT_SEQ.NEXTVAL, #{student.studentNumber}, #{student.studentName}, #{student.studentId}, #{student.studentPasswd},
+                    #{student.subject.subjectNumber}, #{student.studentBirth}, #{student.studentPhone}, #{student.studentAddress}, #{student.studentEmail})
+            """)
+    public int studentInsert(@Param("student") Student student);
+
 }
