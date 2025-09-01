@@ -1,0 +1,194 @@
+/* 공통 적용 스타일 */
+textarea { resize: none; }
+
+/* 게시판 적용 스타일 */
+.board-table-tr-height { height: 300px; }
+.board-table-height { height: 650px; }
+.board-msg-default-color {
+    color: #a2f4ff;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin-left: 0.75rem;
+}
+.board-msg-error-color {
+    color: #ff6b6b;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    margin-left: 0.75rem;
+}
+
+.board-required { color: red; }
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, Segoe UI, Roboto, Apple SD Gotthic Neo, Noto Sans KR, sans-serif;
+    color: #f7f7fb;
+    background: linear-gradient(120deg, #0b0a12, #161a36 40%, #0a1f36);
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+h3 {
+    color: #c3a1ff;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #151829cc;
+    border: 1px solid #2b305a;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px #0008;
+}
+
+thead {
+    background: linear-gradient(90deg, rgba(108, 231, 255, .08), rgba(195, 161, 255, .08));
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: center;
+    border-bottom: 1px solid #2b305a;
+}
+
+th  {
+    color: #6ce7ff;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+td {
+    color: #c9cbe0;
+}
+
+tr:hover td {
+    background: rgba(108, 231, 255, 0.05);
+}
+
+.button {
+    margin-top: 20px;
+    padding: 10px 16px;
+    border:none;
+    border-radius:12px;
+    font-weight:600;
+    cursor:pinter;
+    background:linear-gradient(180deg, #9feeff, #6ce7ff 40%, #3bbbe2);
+    color: #08121e;
+    box-shadow: 0 0 0 2px #2b305a, 0 8px 24px rgba(108, 231, 255, 0.35);
+    transition: 0.25s;
+}
+
+.button:hover {
+    filter: brightness(1.1);
+}
+
+footer{
+    text-align: center;
+    font-size: 0.85rem;
+    color: #c9cbe0;
+    background: linear-gradient(90deg, #141627, #0b0a12);
+    border-top: 1px solid: rgba(108, 231, 255, 0.15);
+    padding: 1rem;
+}
+
+nav {
+    background: linear-gradient(90deg, #0b0a12, #141627);
+    border-bottom: 1px solid rgba(108, 231, 255, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    color: #c9cbe0;
+}
+
+label {
+    width: 120px;
+    min-width: 100px;
+    font-weight: 600;
+    color: #f0f3ff;
+    padding-top: 0.4rem;
+}
+
+input, textarea {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    background-color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    color: #1a1a1a;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.2s ease;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    box-shadow: 0, 0, 0, 2px #6ce7ff;
+}
+
+textarea {
+    height: 250px;
+    resize: none;
+}
+
+.pwd-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group-inline {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#pwdFormArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.passwd-input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(108, 231, 255, 0.25);
+    background-color: #101320;
+    color: #f7f7fb;
+    font-size: 0.95rem;
+    width: 40px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.passwd-input::placeholder {
+    color: #6ce7ff;
+    opacity: 0.6;
+}
+
+.passwd-input:focus {
+    outline: none;
+    border-color: #6ce7ff;
+    box-shadow: 0 0 0 2px rgba(108, 231, 255, 0.2);
+}
+
+.btn-group-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
