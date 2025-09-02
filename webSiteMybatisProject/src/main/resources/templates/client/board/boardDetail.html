@@ -31,16 +31,16 @@
             </table>
         </div>
 
-        <div>
-           <div id="pwdFormArea">
+        <div class="row text-center mb-2">
+           <div class="col-md-7 text-start" id="pwdFormArea">
                 <form id="pwdForm" class="row g-3">
                     <input type="hidden" th:field="*{boardNumber}"/>
                     <div class="form-group-inline">
                         <label for="boardPasswd" class="visually-hidden">비밀번호</label>
                         <input type="password" id="boardPasswd" class="passwd-input" th:field="*{boardPasswd}" placeholder="비밀번호 입력"/>
 
-                        <button type="button" id="passwdBtn" class="button">확인</button>
-                        <button type="button" id="passwdCancelBtn" class="button">취소</button>
+                        <button type="button" id="passwdBtn" class="button btn btn-primary btn-sm">확인</button>
+                        <button type="button" id="passwdCancelBtn" class="button btn btn-primary btn-sm">취소</button>
                     </div>
                     <div class="pwd-message-area">
                         <span id="message" class="pwd-message"></span>
@@ -48,11 +48,11 @@
                 </form>
            </div>
 
-            <div>
-                <button type="button" id="updateFormBtn" class="button">글수정</button>
-                <button type="button" id="boardDeleteBtn" class="button">글삭제</button>
-                <button type="button" id="insertFormBtn" class="button">글쓰기</button>
-                <button type="button" id="boardListBtn" class="button">글목록</button>
+            <div class="col-md-5 text-end">
+                <button type="button" id="updateFormBtn" class="button btn btn-primary btn-sm">글수정</button>
+                <button type="button" id="boardDeleteBtn" class="button btn btn-primary btn-sm">글삭제</button>
+                <button type="button" id="insertFormBtn" class="button btn btn-primary btn-sm">글쓰기</button>
+                <button type="button" id="boardListBtn" class="button btn btn-primary btn-sm">글목록</button>
             </div>
         </div>
     </div>

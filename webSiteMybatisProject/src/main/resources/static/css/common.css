@@ -161,7 +161,10 @@ textarea {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
-    gap: 1rem;
+}
+
+#boardPasswd {
+    margin-top: 20px;
 }
 
 .passwd-input {
@@ -191,4 +194,67 @@ textarea {
     flex-wrap: wrap;
     gap: 0.5rem;
     align-items: center;
+}
+
+#boardSearch {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    padding: 0 16px;
+    boarder-radius: 12px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 0 12px rgba(0, 200, 255, 0.2);
+}
+
+#boardSearch label {
+    font-size: 0.9rem;
+    color: #6ce7ff;
+    margin-right: 6px;
+    white-space: nowrap;
+}
+
+#boardSearch select {
+    background: rgba(15, 20, 35, 0.8);
+    border: 1px solid rgba(0, 200, 255, 0.4);
+    color: #f7f7fb;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    transition: all 0.3s ease;
+    position: relative;
+    appearance: auto;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+}
+
+#boardSearch select:hover,
+#boardSearch select:focus {
+    border-color: #6ce7ff;
+    box-shadow: 0 0 10px rgba(120, 200, 255, 0.6);
+}
+
+#boardSearch input[type="text"] {
+    background: rgba(180, 220, 225, 0.6);
+    boarder: 1px solid rgba(0, 200, 25, 0.4);
+    color: rgba(255, 255, 255, 0.75);
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    outline: none;
+    width: 220px;
+    transition: all 0.3s ease;
+    font-style: italic;
+}
+
+#boardSearch input[type="text"]:focus {
+    border-color: #6ce7ff;
+    box-shadow: 0 0 12px rgba(120, 200, 255, 0.6);
+}
+
+#boardSearch button {
+    margin-bottom: 20px;
 }

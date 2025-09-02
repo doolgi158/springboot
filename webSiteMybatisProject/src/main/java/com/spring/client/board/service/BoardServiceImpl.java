@@ -2,6 +2,8 @@ package com.spring.client.board.service;
 
 import com.spring.client.board.mapper.BoardMapper;
 import com.spring.client.board.vo.Board;
+import com.spring.common.dto.RequestDTO;
+import com.spring.common.dto.ResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +14,17 @@ import java.util.List;
 public class BoardServiceImpl implements BoardService {
     private final BoardMapper boardMapper;
 
-    @Override
+    /*@Override
     public List<Board> boardList(Board board) {
         List<Board> boardList = boardMapper.boardList(board);
         return boardList;
+    }*/
+
+    @Override
+    public ResponseDTO<Board> list(RequestDTO requestDTO) {
+        List<Board> boardList = boardMapper.boardList(requestDTO);
+        ResponseDTO<Board> responseDTO = new ResponseDTO<Board>(boardList, requestDTO);
+        return responseDTO;
     }
 
     @Override

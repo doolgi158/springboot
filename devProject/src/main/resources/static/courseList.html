@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>과목 리스트</title>
+    <style>
+        li { list-style: none; }
+    </style>
+</head>
+<body>
+    <button type="button" id="courseListBtn">과목 출력</button>
+
+    <div id="courseList"></div>
+</body>
+<script>
+    document.getElementById("courseListBtn").addEventListener("click", function() {
+        fetch("courseList")
+        .then(response => response.json())
+        .then(data => {
+            let courseList = document.getElementById("courseList");
+            courseList.textContent = "";
+
+            if(data.length == 0) {
+                courseList.textContent = "데이터가 존재하지 않습니다."
+            } else {
+                data.forEach((course) => {
+                    const ul = document.createElement("ul");
+
+                    const liNo = document.createElement("li");
+                    liNo.textContent = "번호 : " + course.no;
+
+                    const liNum = document.createElement("li");
+                    liNum.textContent = "코드 : " + course.courseNumber;
+
+                    const liName = document.createElement("li");
+                    liName.textContent = "이름 : " + course.courseName;
+
+                    const liCredit = document.createElement("li");
+                    liCredit.textContent = "학점 : " + course.courseCredit;
+
+                    const liSection = document.createElement("li");
+                    liSection.textContent = "구분 : " +  course.courseSection;
+
+                    const hr = document.createElement("hr");
+
+                    ul.appendChild(liNo)
+                      .appendChild(liNum)
+                      .appendChild(liName)
+                      .appendChild(liCredit)
+                      .appendChild(liSection);
+
+                     courseList.appendChild(ul).appendChild(hr);
+                })
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+</html>

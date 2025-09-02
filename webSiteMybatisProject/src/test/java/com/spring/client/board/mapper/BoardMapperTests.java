@@ -1,6 +1,7 @@
 package com.spring.client.board.mapper;
 
 import com.spring.client.board.vo.Board;
+import com.spring.common.dto.RequestDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,16 @@ public class BoardMapperTests {
     @Autowired
     private BoardMapper boardMapper;
 
-    @Test
+    /*@Test
     public void boardListTest() {
         Board board = null;
         boardMapper.boardList(board).stream().forEach(boardData -> log.info(boardData.toString()));
+    }*/
+
+    @Test
+    public void boardListTest() {
+        RequestDTO requestDTO = new RequestDTO().builder().search("B_TITLE").keyword("1차").build();
+        boardMapper.boardList(requestDTO).stream().forEach(boardData -> log.info(boardData.toString()));
     }
 
     @Test

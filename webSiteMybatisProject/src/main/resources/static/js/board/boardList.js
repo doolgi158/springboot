@@ -12,3 +12,49 @@ document.addEventListener('click', (event) => {
 
     locationProcess(`/board/${boardNumber}`);
  });
+
+ const keyword = document.querySelector("#keyword");
+ const search = document.querySelector("#search");
+
+ let value = "";
+ let regex;
+
+ const highlightKeyword = function(element, keyword, regex) {
+    const html = element.innerHTML;
+    element.innerHTML = html.replace(regex, `<span class='board-required'>${keyword}</span>`);
+ };
+
+ const searchKeyword = function() {
+    const word = keyword.value.trim();
+    const searchData = search.value;
+
+    if(word !== "" && searchData !== "B_CONTENT") {
+        const value = (searchData === "B_TITLE") ? ".list tr td.goDetail"
+                                                : (searchData === "B_NAME") ? ".list tr td.name"
+                                                : "";
+        const elements = document.querySelectorAll(value);
+
+        const regex = new RegExp(word, "gi");
+        elements.forEach((el) => {
+            highlightKeyword(el, word, regex);
+        });
+    }
+ };
+
+document.getElementById("keyword").addEventListener("keydown", function(event){
+    if(event.key === "Enter") {
+        event.preventDefault();
+    }
+});
+
+document.getElementById("searchBtn").addEventListener("click", function() {
+    if(!chkData("#keyword", "검색어를")) return;
+    formSubmit("searchForm", "get", "/board/boardList");
+});
+
+document.getElementById("allSearchBtn").addEventListener("click", function() {
+    locationProcess("/board/boardList");
+});
+
+// 초기 실행
+searchKeyword();

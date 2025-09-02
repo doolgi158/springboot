@@ -1,6 +1,7 @@
 package com.spring.client.board.mapper;
 
 import com.spring.client.board.vo.Board;
+import com.spring.common.dto.RequestDTO;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -17,12 +18,14 @@ public interface BoardMapper {
             @Result(property = "boardPasswd", column = "b_pwd"),
             @Result(property = "boardReadcnt", column = "b_readcnt")
     })
-    @Select("""
+    @SelectProvider(type = BoardSqlProvider.class, method = "selectListQuery")
+    public List<Board> boardList(RequestDTO requestDTO);
+    /*@Select("""
             SELECT B_NUM, B_NAME, B_TITLE, TO_CHAR(B_DATE, 'YYYY-MM-DD') AS b_date, b_readcnt
             FROM SPRING_BOARD
             ORDER BY B_NUM DESC
             """)
-    public List<Board> boardList(Board board);  // 검색 포함 리스트
+    public List<Board> boardList(Board board);  // 검색 포함 리스트*/
 
     @Insert("""
             INSERT INTO SPRING_BOARD(B_NUM, B_NAME, B_TITLE, B_CONTENT, B_PWD)

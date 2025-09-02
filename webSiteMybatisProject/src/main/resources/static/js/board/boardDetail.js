@@ -41,7 +41,7 @@ document.getElementById("passwdBtn").addEventListener("click", function() {
     const messageEl = document.querySelector("#message");
     const pwdForm = document.querySelector("#pwdForm");
 
-    if(!chkData("#boardPasswd", "#message", "비밀번호를")) return;
+    if(!dataCheck("#boardPasswd", "#message", "비밀번호를")) return;
     // FormData는 해당 폼 내의 모든 입력 필드(name 속성이 있는 것들)를 자동으로 수집하여 key-value 형태로 저장
     const formData = new FormData(pwdForm);
 
