@@ -34,7 +34,7 @@ public class BoardController {
     @return*/
     @GetMapping("/boardList")
     public String boardList(Board board, Model model) {
-        List<Board> boardList = boardService.bordList(board);
+        List<Board> boardList = boardService.boardList(board);
         model.addAttribute("boardList", boardList);
 
         return "client/board/boardList";
