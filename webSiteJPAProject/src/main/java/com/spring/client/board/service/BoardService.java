@@ -1,6 +1,8 @@
 package com.spring.client.board.service;
 
 import com.spring.client.board.domain.Board;
+import com.spring.client.common.dto.PageRequestDTO;
+import com.spring.client.common.dto.PageResponseDTO;
 
 import java.util.List;
 
@@ -12,4 +14,6 @@ public interface BoardService {
     public Board boardDetail(Board board);
     public void boardUpdate(Board board);
     public void boardDelete(Board board);
+
+    PageResponseDTO<Board> list(PageRequestDTO pageRequestDTO);
 }

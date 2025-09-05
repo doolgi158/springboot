@@ -2,39 +2,52 @@ package com.spring.client.board.controller;
 
 import com.spring.client.board.domain.Board;
 import com.spring.client.board.service.BoardService;
+import com.spring.client.common.dto.PageRequestDTO;
+import com.spring.client.common.dto.PageResponseDTO;
+import com.spring.client.common.util.CustomFileUtil;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/board")
+@RequestMapping("/board/*")
 public class BoardController {
-    public final BoardService boardService;
+    private final BoardService boardService;
+    private final CustomFileUtil fileUtil;  // 필드 선언
 
     @GetMapping("/insertForm")
     public String insertForm(Board board) {
         return "client/board/insertForm";
     }
 
+    /*게시글만 입력
     @PostMapping("/boardInsert")
     public String boardInsert(Board board) {
         boardService.boardInsert(board);
         return "redirect:/board/boardList";
-    }
+    }*/
+
 
     /*검색 기능 및 페이징 처리 제외
     @Param board
     @return*/
-    @GetMapping("/boardList")
+    /*@GetMapping("/boardList")
     public String boardList(Board board, Model model) {
         List<Board> boardList = boardService.boardList(board);
+        model.addAttribute("boardList", boardList);
+
+        return "client/board/boardList";
+    }*/
+
+    @GetMapping("/boardList")
+    public String boardList(Board board, PageRequestDTO pageRequestDTO, Model model) {
+        PageResponseDTO<Board> boardList = boardService.list(pageRequestDTO);
         model.addAttribute("boardList", boardList);
 
         return "client/board/boardList";
@@ -50,10 +63,10 @@ public class BoardController {
         하지만 이런 방식은, 서로 다른 종류의 OS에서 동작하는 프로그램에서 문제가 발생할 수 있다.
         [참고] String#format()의 %n: String#format()에서 %n은 line separator를 의미한다.
          */
-         String newLine = System.getProperty("line.separator").toString();
-         model.addAttribute("newLine", newLine);
+        String newLine = System.getProperty("line.separator").toString();
+        model.addAttribute("newLine", newLine);
 
-         return "client/board/boardDetail";
+        return "client/board/boardDetail";
     }
 
     @PostMapping("/updateForm")
@@ -63,15 +76,59 @@ public class BoardController {
         return "client/board/updateForm";
     }
 
-    @PostMapping("/boardUpdate")
+    /*@PostMapping("/boardUpdate")
     public String boardUpdate(Board board) {
         boardService.boardUpdate(board);
         return "redirect:/board/" + board.getNo();
+    }*/
+
+    /*@PostMapping("/boardDelete")
+    public String bardDelete(Board board) {
+        boardService.boardDelete(board);
+        return "redirect:/board/boardList";
+    }*/
+
+    @PostMapping("/boardInsert")
+    public String boardInsert(Board board) {
+        if (!board.getFile().isEmpty()) {    // 새로 업로드 파일이 존재하면
+            String uploadFileName = fileUtil.saveFile(board.getFile());
+            board.setFilename(uploadFileName);
+        }
+        boardService.boardInsert(board);
+        return "redirect:/board/boardList";
+    }
+
+    // 업로드 파일 보여주기
+    @ResponseBody
+    @GetMapping("/view/{fileName}")
+    public ResponseEntity<Resource> viewFileGET(@PathVariable String fileName) {
+        return fileUtil.getFile(fileName);
     }
 
     @PostMapping("/boardDelete")
-    public String bardDelete(Board board){
+    public String boardDelete(Board board) {
+        Board deleteData = boardService.getBoard(board.getNo());
+        if(deleteData.getFilename() != null) {  // 기존 파일이 존재하면
+            fileUtil.deleteFile(deleteData.getFilename());
+        }
         boardService.boardDelete(board);
         return "redirect:/board/boardList";
+    }
+
+    @PostMapping("/boardUpdate")
+    public String boardUpdate(Board board) {
+        Board updateData = boardService.getBoard(board.getNo());
+
+        if(!board.getFile().isEmpty()) {    // 새로 업로드 파일이 존재하면
+            if(updateData.getFilename() != null) {  // 기존 파일이 존재하면
+                fileUtil.deleteFile(updateData.getFilename());
+            }
+
+            String uploadFileName = fileUtil.saveFile(board.getFile());
+            board.setFilename(uploadFileName);
+        }
+
+        boardService.boardUpdate(board);
+        return "redirect:/board/" + board.getNo();
     }
 }

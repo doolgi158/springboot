@@ -37,6 +37,7 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:3.4.0'
+    implementation("net.coobird:thumbnailator:0.4.20")
 }
 
 tasks.named('test') {

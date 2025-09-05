@@ -13,6 +13,10 @@
 
             <table>
                 <tbody>
+                    <tr th:if="*{not #strings.isEmpty(filename)}">
+                        <td class="col-md-3 align-middle">이미지</td>
+                        <td colspan="3"><img th:src="@{/board/view/} + *{filename}" /></td>
+                    </tr>
                     <tr>
                         <td class="col-md-3">작성자</td>
                         <td class="col-md-3 text-start" th:text="*{name}+' (조회수: '+*{hit}+')'"></td>
