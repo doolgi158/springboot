@@ -3,45 +3,44 @@
       layout:decorate="~{template/client/layout/layout}">
 
 <th:block block layout:fragment="content">
-    <div class="text-center"><h3>게시판 상세</h3></div>
-
-    <div class="container" th:object="${detail}">
-        <div>
+    <div class="board-detail-container" th:object="${detail}">
+        <h1 class="board-title">게시판 상세</h1>
+        <div class="board-detail">
             <form id="dataForm">
                 <input type="hidden" name="no" th:value="*{no}"/>
             </form>
 
-            <table>
+            <table class="board-table">
                 <tbody>
                     <tr th:if="*{not #strings.isEmpty(filename)}">
-                        <td class="col-md-3 align-middle">이미지</td>
-                        <td colspan="3"><img th:src="@{/board/view/} + *{filename}" /></td>
+                        <td class="board-label">이미지</td>
+                        <td colspan="3" class="board-value">
+                            <img th:src="@{/board/view/} + *{filename}" />
+                        </td>
                     </tr>
                     <tr>
-                        <td class="col-md-3">작성자</td>
-                        <td class="col-md-3 text-start" th:text="*{name}+' (조회수: '+*{hit}+')'"></td>
-                        <td class="col-md-3">작성일</td>
-                        <td class="col-md-3 text-start" th:text="*{regDate}"></td>
+                        <td class="board-label">작성자</td>
+                        <td class="board-value" th:text="*{name}+' (조회수: '+*{hit}+')'"></td>
+                        <td class="board-label">작성일</td>
+                        <td class="board-value" th:text="*{regDate}"></td>
                     </tr>
                     <tr>
-                        <td class="col-md-3">글제목</td>
-                        <td class="col-md-9 text-start" colspan="3" th:text="*{title}"></td>
+                        <td class="board-label">글제목</td>
+                        <td class="board-value" colspan="3" th:text="*{title}"></td>
                     </tr>
-                    <tr class="board-table-tr-height">
-                        <td class="col-md-3">글내용</td>
-                        <td class="col-md-9 text-start" colspan="3" th:text="*{content}"></td>
+                    <tr class="board-content-row">
+                        <td class="board-label">글내용</td>
+                        <td class="board-value" colspan="3" th:text="*{content}"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="row text-center mb-2">
-            <div class="text-end">
-                <button type="button" id="updateFormBtn" class="button btn btn-primary btn-sm">글수정</button>
-                <button type="button" id="boardDeleteBtn" class="button btn btn-primary btn-sm">글삭제</button>
-                <button type="button" id="insertFormBtn" class="button btn btn-primary btn-sm">글쓰기</button>
-                <button type="button" id="boardListBtn" class="button btn btn-primary btn-sm">글목록</button>
-            </div>
+        <div class="board-actions">
+            <button type="button" id="updateFormBtn" class="button btn btn-primary btn-sm">글수정</button>
+            <button type="button" id="boardDeleteBtn" class="button btn btn-primary btn-sm">글삭제</button>
+            <button type="button" id="insertFormBtn" class="button btn btn-primary btn-sm">글쓰기</button>
+            <button type="button" id="boardListBtn" class="button btn btn-primary btn-sm">글목록</button>
         </div>
     </div>
 </th:block>

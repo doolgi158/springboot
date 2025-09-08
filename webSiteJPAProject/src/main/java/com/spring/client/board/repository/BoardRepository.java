@@ -16,10 +16,10 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
     // findBy[FieldName]
     Board findByTitle(String title);
 
-    // findBy[FieldName]Containing
+    /*// findBy[FieldName]Containing
     List<Board> findByTitleContaining(String title);
     List<Board> findByNameContaining(String name);
-    List<Board> findByContentContaining(String content);
+    List<Board> findByContentContaining(String content);*/
 
     // findBy[FieldName][Between]
     List<Board> findByRegDateBetween(LocalDateTime startDate, LocalDateTime endDate);
@@ -30,7 +30,14 @@ public interface BoardRepository extends CrudRepository<Board, Long> {
     // JpaRepository
     Page<Board> findAll(Pageable pageable);
 
-    Page<Board> findByTitleContaining(String keyword, Pageable pageable);
+    // Page<Board> findByTitleContaining(String keyword, Pageable pageable);
+
+    // service에서 사용하는 메서드
+    Page<Board> findByTitleContaining(String title, Pageable pageable);
+    Page<Board> findByNameContaining(String name, Pageable pageable);
+    Page<Board> findByContentContaining(String content, Pageable pageable);
+
+    Page<Board> findByRegDateBetween(LocalDateTime startDate, LocalDateTime endDate, Pageable pageable);
 
     /* JPQL 적용
     JPA 에서 사용하는 객체지향 쿼리 언어이다.

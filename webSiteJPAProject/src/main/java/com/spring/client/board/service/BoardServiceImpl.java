@@ -77,8 +77,32 @@ public class BoardServiceImpl implements BoardService{
         Pageable pageable = PageRequest.of(pageRequestDTO.getPage() - 1, // 1페이지가 0이므로 주의
                 pageRequestDTO.getSize(),
                 Sort.by("no").descending());
-        Page<Board> result = boardRepository.findAll(pageable);
+        //Page<Board> result = boardRepository.findAll(pageable);
         // 조회된 Page 객체에서 실제 데이터 리스트만 추출
+        Page<Board> result;
+
+        switch(pageRequestDTO.getSearch()) {
+            case "title":
+                result = boardRepository.findByTitleContaining(
+                        pageRequestDTO.getKeyword(), pageable);
+                break;
+            case "name":
+                result = boardRepository.findByNameContaining(
+                        pageRequestDTO.getKeyword(), pageable);
+                break;
+            case "content":
+                result = boardRepository.findByContentContaining(
+                        pageRequestDTO.getKeyword(), pageable);
+                break;
+            case "regDate":
+                result = boardRepository.findByRegDateBetween(
+                        pageRequestDTO.getStartDate(), pageRequestDTO.getEndDate(), pageable);
+                break;
+            default:
+                result = boardRepository.findAll(pageable);
+                break;
+        }
+
         List<Board> boardList = result.getContent().stream().collect(Collectors.toList());
         long totalCount = result.getTotalElements();
         PageResponseDTO<Board> responseDTO = PageResponseDTO.<Board>withAll()
@@ -86,6 +110,7 @@ public class BoardServiceImpl implements BoardService{
                 .pageRequestDTO(pageRequestDTO)
                 .totalCount(totalCount)
                 .build();
+
         return responseDTO;
     }
 }

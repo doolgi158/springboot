@@ -5,40 +5,35 @@
 </head>
 <body>
 <main>
-    <div class="container py-4">
-        <header class="pb-3 mb-2">
+    <div class="main-container">
+        <header class="main-header">
             <th:block th:insert="~{template/client/fragments/block :: header}"></th:block>
         </header>
 
-        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">Effort Quotes</h1>
-                <p class="col-md-8 fs-4">노력 없이 얻는 것은 없다. There are no gains without pains.</p>
-                <p class="col-md-8 fs-4">끊임없이 도전하는 자만이 승리한다. The man who moves a mountain begins by carrying away small stones</p>
-                <button class="btn btn-primary btn-lg" type="button">Effort Quotes</button>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Effort Quotes</h1>
+                <p>노력 없이 얻는 것은 없다. There are no gains without pains.</p>
+                <p>끊임없이 도전하는 자만이 승리한다. The man who moves a mountain begins by carrying away small stones</p>
+                <button class="btn-primary-lg" type="button">Effort Quotes</button>
             </div>
-        </div>
+        </section>
 
-        <div class="row align-items-md-stretch">
-            <div class="col-md-6">
-                <div class="h-100 p-5 text-bg-dark rounded-3">
-                    <h2>갤러리 게시판 관리</h2>
-                    <p>썸네일 처리 게시판. 입력/수정/삭제 처리 완료. </p>
-                    <button class="btn btn-outline-light gallery" type="button">갤러리 게시판 리스트</button>
-                </div>
+        <section class="board-section">
+            <div class="board-card dark">
+                <h2>갤러리 게시판 관리</h2>
+                <p>썸네일 처리 게시판. 입력/수정/삭제 처리 완료. </p>
+                <button class="btn-outline gallery" type="button">갤러리 게시판 리스트</button>
             </div>
 
-
-            <div class="col-md-6">
-                <div class="h-100 p-5 bg-body-tertiary border rounded-3">
-                    <h2>게시판 관리</h2>
-                    <p>자유 게시판. 입력/수정/삭제 및 댓글 작성까지 처리 완료.</p>
-                    <button class="btn btn-outline-secondary article" type="button">게시판 리스트</button>
-                </div>
+            <div class="board-card light">
+                <h2>게시판 관리</h2>
+                <p>자유 게시판. 입력/수정/삭제 및 댓글 작성까지 처리 완료.</p>
+                <button class="btn-outline article" type="button">게시판 리스트</button>
             </div>
-        </div>
+        </section>
 
-        <footer class="pt-3 mt-4 text-body-secondary border-top">
+        <footer class="main-footer">
             &copy; 2025
         </footer>
     </div>

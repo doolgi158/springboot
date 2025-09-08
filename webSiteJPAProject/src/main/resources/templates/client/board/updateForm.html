@@ -3,46 +3,34 @@
       layout:decorate="~{template/client/layout/layout}">
 
 <th:block layout:fragment="content">
-    <div class="text-center"><h3>게시판 수정</h3></div>
-
-    <div class="container">
-        <form id="updateForm" name="updateForm">
-            <div th:object="${updateData}">
-                <input type="hidden" name="no" th:value="*{no}" />
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">작성자</label>
-                    <div class="col-sm-10">
-                        <p class="form-control-static" th:text="*{name}"><</p>
-                        <!-- <input type="text" class="form-control" th:field="*{boardName}" readonly="readonly" /> -->
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">글제목</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control" th:field="*{title}" />
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">글내용</label>
-                    <div class="col-sm-10">
-                        <textarea class="form-control board-textarea" rows="8" th:field="*{content}"></textarea>
-                    </div>
-                </div>
-                <div class="mb-3 row" th:if="*{not #strings.isEmpty(filename)}">
-                    <label class="col-sm-2 col-form-label">이미지</label>
-                    <div class="col-sm-10">
-                        <img th:src="@{/board/view/} + *{filename}" />
-                    </div>
-                </div>
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">이미지파일</label>
-                    <div class="col-sm-10">
-                        <input type="file" class="form-control" th:field="*{file}">
-                    </div>
+    <div class="board-form-container">
+        <h1 class="board-title">게시판 수정</h1>
+        <form id="updateForm" name="updateForm" th:object="${updateData}">
+            <input type="hidden" name="no" th:value="*{no}" />
+            <div class="form-group">
+                <label class="col-sm-2 col-form-label">작성자</label>
+                <p class="readonly-text" th:text="*{name}"></p>
+                <!-- <input type="text" class="form-control" th:field="*{boardName}" readonly="readonly" /> -->
+            </div>
+            <div class="form-group">
+                <label class="title">글제목</label>
+                <input type="text" class="form-control" th:field="*{title}" />
+            </div>
+            <div class="form-group">
+                <label class="content">글내용</label>
+                <textarea class="board-textarea" rows="8" th:field="*{content}"></textarea>
+            </div>
+            <div class="form-group" th:if="*{not #strings.isEmpty(filename)}">
+                <label class="col-sm-2 col-form-label">이미지</label>
+                <div class="image-preview">
+                    <img th:src="@{/board/view/} + *{filename}" />
                 </div>
             </div>
-
-            <div class="text-end">
+            <div class="form-group">
+                <label class="file">이미지파일</label>
+                <input type="file" class="form-control" th:field="*{file}">
+            </div>
+            <div class="form-actions">
                 <button type="button" id="boardUpdateBtn" class="button btn btn-primary btn-sm">수정</button>
                 <button type="button" id="boardCancelBtn" class="button btn btn-primary btn-sm">취소</button>
                 <button type="button" id="boardListBtn" class="button btn btn-primary btn-sm">목록</button>

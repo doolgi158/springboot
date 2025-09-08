@@ -1,0 +1,85 @@
+.board-detail-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border: 1px solid #17a2b8;
+    border-radius: 12px;
+    box-shadow: 0 0 16px rgba(23, 162, 184, 0.35), inset 0 0 0 1px rgba(23, 162, 184, 0.18);
+}
+
+.board-title {
+    text-align: center;
+    color: #f1c40f;
+    margin-bottom: 1.5rem;
+}
+
+.board-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5rem;
+    background: #111;
+    border: 1px solid #17a2b8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.board-table td {
+    padding: 0.8rem 1rem;
+    border: 1px solid #17a2b8;
+    color: #eee;
+    vertical-align: top;
+}
+
+.board-label {
+    width: 20%;
+    background: #222;
+    font-weight: bold;
+    color: #f1c40f;
+    text-align: center;
+}
+
+.board-value {
+    background: #1a1a1a;
+    text-align: left;
+}
+
+.board-content-row td {
+    height: 200px;
+    vertical-align: top;
+    white-space: pre-wrap;
+}
+
+.board-value img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+}
+
+.board-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.board-actions button {
+    background: #0dcaf0;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.board-actions button:hover {
+    background: #09a5c2;
+}
+
+.board-actions button:nth-child(2) {
+    background: #e74c3c;
+}
+
+.board-actions button:nth-child(2):hover {
+    background: #c0392b;
+}

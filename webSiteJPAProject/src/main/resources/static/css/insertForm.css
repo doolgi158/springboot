@@ -1,0 +1,120 @@
+.insert {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    border: 1px solid #17a2b8;
+    border-radius: 12px;
+    box-shadow: 0 0 16px rgba(23, 162, 184, 0.35), inset 0 0 0 1px rgba(23, 162, 184, 0.18);
+}
+
+.insert h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.6rem;
+    color: #d4af37;
+    text-align: center;
+    margin-bottom: 2rem;
+    margin-top: 0;
+}
+
+#insertForm .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.2rem;
+}
+
+#insertForm label {
+    font-weight: 600;
+    color: #f1c40f;
+    margin-right: 0.4rem;
+}
+
+#insertForm input[type="text"],
+#insertForm input[type="file"],
+#insertForm .board-textarea {
+    width: 100%,
+    background-color: #111;
+    border: 1px solid #17a2b8;
+    color: #eee;
+    font-size: 1rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 6px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    box-sizing: border-box;
+}
+
+#insertForm input:focus,
+#insertForm textarea:focus {
+    outline: none;
+    border-color: #0dcaf0;
+    box-shadow: 0 0 6px rgba(13, 202, 240, 0.6);
+}
+
+#insertForm textarea {
+    min-height: 200px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+#insertForm input[type="file"]::file-selector-button {
+    background: linear-gradient(135deg, #17a2b8, #0d6efd);
+    border: none;
+    color: #fff;
+    padding: 0.35rem 0.75rem;
+    margin-right: 0.6rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: filter 0.2s;
+}
+
+#insertForm input[type="file"]::file-selector-button:hover {
+    filter: brightness(1.1);
+}
+
+#insertForm .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.6rem;
+    margin-top: 1.5rem;
+}
+
+#insertForm .button {
+    background: linear-gradient(135deg, #17a2b8, #0d6efd);
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    transition: transform 0.6s ease, filter 0.2s;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(23, 162, 184, 0.6);
+}
+
+#insertForm .button:active {
+    transform: translateY(1px);
+}
+
+#insertForm .button:hover {
+    filter: brightness(1.08);
+}
+
+#boardCancelBtn {
+    background: linear-gradient(135deg, #6c757d, #444) !important;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.2) !important;
+}
+
+#boardListBtn {
+    background: linear-gradient(135deg, #ffc107, #d4af37) !important;
+    color: #111 !important;
+    box-shadow: 0 0 6px rgba(255, 193, 7, 0.5) !important;
+}
+
+@media (max-width: 640px) {
+    #insertForm .form-group {
+        grid-template-columns: 1fr;
+    }
+    #insertForm label {
+        text-align: left;
+        margin-bottom: 0.3rem
+    }
+}
