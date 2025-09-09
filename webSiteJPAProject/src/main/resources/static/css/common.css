@@ -56,3 +56,20 @@ body {
 .footer p {
     margin: 0;
 }
+
+.article-table-height {
+    height: 500px;
+}
+
+.cdate {
+    font-size: 12px;
+}
+
+.reply-count {
+    color: red;
+    font-size: 12px;
+}
+
+#item-template {
+    display: none;
+}

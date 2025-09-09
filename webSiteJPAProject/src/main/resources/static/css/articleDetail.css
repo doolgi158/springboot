@@ -1,0 +1,117 @@
+#commentForm {
+    background: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-top: 2rem;
+}
+
+#commentForm label {
+    color: #f1c40f;
+    font-weight: bold:
+    margin-right: 0.5rem;
+}
+
+#commentForm input,
+#commentForm textarea {
+    width: 98%;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+    background: #121212;
+    color:#eee;
+}
+
+#commentForm input:focus,
+#commentForm textarea:focus {
+    outline: none;
+    border-color: #0dcaf0;
+    box-shadow: 0 0 4px rgba(13, 202, 240, 0.5);
+}
+#commentInsertBtn,
+#commentUpdateBtn {
+    background: #0dcaf0;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+#commentInsertBtn:hover {
+    background: #0bb8d1;
+}
+.commentCancelBtn {
+    background: #6c757d;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-left: 0.5rem;
+}
+
+.commentCancelBtn:hover {
+    background: #5a6268;
+}
+
+#commentList {
+    margin-top: 1.5rem;
+}
+
+#commentList .card {
+    background: #1a2730;
+    border: 1px solid #2a3c48;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+#commentList .card-header {
+    background: #0dcaf0;
+    color: #000;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.6rem 1rem;
+}
+
+#commentList .card-header .name {
+    color: #000;
+    margin-right: 0.5rem;
+}
+
+#commentList .card-header .cdate {
+    font-size: 0.9rem;
+    color: #333;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+#commentList .card-body {
+    padding: 1rem;
+    color: #eaeaea;
+}
+
+#commentList .card-header a {
+    background: #f1c40f;
+    color: #000;
+    text-decoration: none;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-left: 0.4rem;
+    transition: background 0.2s;
+}
+
+#commentList .card-header a:hover {
+    background: #d4ac0d;
+}

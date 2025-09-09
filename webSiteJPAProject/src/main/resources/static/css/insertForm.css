@@ -98,11 +98,13 @@
     filter: brightness(1.08);
 }
 
-#boardCancelBtn {
+#boardCancelBtn,
+#articleInsertBtn {
     background: linear-gradient(135deg, #6c757d, #444) !important;
     box-shadow: 0 0 6px rgba(255, 255, 255, 0.2) !important;
 }
 
+#boardListBtn,
 #boardListBtn {
     background: linear-gradient(135deg, #ffc107, #d4af37) !important;
     color: #111 !important;

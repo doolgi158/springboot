@@ -128,8 +128,8 @@ button.report:hover {
 
 .boardSearch .form-control,
 .boardSearch .form-select,
- .boardSearch input[type="text"],
- .boardSearch input[type="datatime-local"] {
+.boardSearch input[type="text"],
+.boardSearch input[type="datatime-local"] {
     background-color: #111;
     border: 1px solid #17a2b8;
     color: #eee;
@@ -140,8 +140,8 @@ button.report:hover {
 
 .boardSearch .form-control:focus,
 .boardSearch .form-select:focus,
- .boardSearch input[type="text"]:focus,
- .boardSearch input[type="datatime-local"]:focus {
+.boardSearch input[type="text"]:focus,
+.boardSearch input[type="datatime-local"]:focus {
     outline: none;
     box-shadow: 0 0 6px #17a2b8;
     border-color: #0dcaf0;

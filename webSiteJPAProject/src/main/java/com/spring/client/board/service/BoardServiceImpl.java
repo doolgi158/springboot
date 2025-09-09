@@ -29,9 +29,7 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void boardInsert(Board board) {
-        boardRepository.save(board);
-    }
+    public void boardInsert(Board board) { boardRepository.save(board); }
 
     @Override
     public Board getBoard(Long no) {

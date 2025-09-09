@@ -83,3 +83,12 @@
 .board-actions button:nth-child(2):hover {
     background: #c0392b;
 }
+
+button.report {
+    background: linear-gradient(135deg, #d4af37, #a67c00);
+}
+
+button.report:hover {
+    background: linear-gradient(135deg, #ffd700, #d4af37);
+    color: #000;
+}
