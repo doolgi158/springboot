@@ -19,7 +19,7 @@ const template = (data) => {
     div.appendChild(element);
 };
 
-const dataRest = () => {
+const dataReset = () => {
     const commentForm = document.getElementById('commentForm');
     commentForm.reset();
 }
@@ -98,7 +98,7 @@ document.addEventListener("click", function(e) {
 
         const resetButton = document.createElement("button");
         resetButton.type = "button";
-        resetButton.className = "commentCancelBtn";
+        resetButton.className = "resetBtn";
         resetButton.textContent = "취소";
 
         // sendBtn 다음에 삽입
@@ -130,11 +130,11 @@ document.addEventListener("click", function(e) {
     }
 });
 
-document.addEventListener("click", function(e) {
-    if(e.target.id === "commentUpdateBtn") {
+document.addEventListener("click", function (e) {
+    if (e.target.id === "commentUpdateBtn") {
         const commentId = document.getElementById("id").value;
 
-        if(!checkForm("#body", "댓글내용을")) return;
+        if (!checkForm("#body", "댓글내용을")) return;
         const body = document.getElementById("body").value;
 
         fetch(`/comments/${commentId}`, {
@@ -142,19 +142,17 @@ document.addEventListener("click", function(e) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                body: body
-            })
+            body: JSON.stringify({ body: body })
         })
         .then(response => response.json())
         .then(data => {
-            if(data !== "") {
+            if (data !== "") {
                 alert("댓글 수정이 완료되었습니다.");
                 dataReset();
                 init();
 
                 const commentElement = document.querySelector(`#commentList div[data-id='${commentId}']`);
-                if(commentElement) {
+                if (commentElement) {
                     const contentDiv = commentElement.querySelector(".card-text");
                     contentDiv.innerHTML = data.body.replace(/(\r\n|\r|\n)/g, "<br />");
                 }

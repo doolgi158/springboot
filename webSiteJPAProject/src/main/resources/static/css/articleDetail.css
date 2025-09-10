@@ -45,7 +45,7 @@
 #commentInsertBtn:hover {
     background: #0bb8d1;
 }
-.commentCancelBtn {
+.resetBtn {
     background: #6c757d;
     border: none;
     color: #fff;
@@ -57,7 +57,7 @@
     margin-left: 0.5rem;
 }
 
-.commentCancelBtn:hover {
+.resetBtn:hover {
     background: #5a6268;
 }
 

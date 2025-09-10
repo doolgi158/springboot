@@ -23,26 +23,18 @@
 
 <!-- 상단 navbar  -->
 <th:block th:fragment="header">
-    <div class="navbar">
-        <h1 class="project">My Project</h1>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/board/boardList">게시판</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-                </li> -->
-            </ul>
-            <!-- <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form> -->
+    <header>
+        <div class="navbar">
+            <a href="/">
+                <h1 class="project">My Project</h1>
+            </a>
+            <nav class="collapse navbar-collapse" id="navbarCollapse">
+                <a class="nav-link" href="/board/boardList">갤러리 게시판</a>
+                <a class="nav-link" href="/article/articleList">자유 게시판</a>
+                <a class="nav-link" href="/data/busanWalkingView">부산도보여행</a>
+            </nav>
         </div>
-    </div>
+    </header>
 </th:block>
 
 <!-- footer  -->
