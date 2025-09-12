@@ -83,3 +83,5 @@
   background: linear-gradient(145deg, #ffd966, #d4a017);
   transform: scale(1.05);
 }
+
+#item-template { display: none; }

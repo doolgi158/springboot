@@ -51,21 +51,19 @@ public class ArticleController {
 
     @PostMapping("/updateForm")
     public String updateForm(Article article, Model model) {
-        Article updateData = articleService.getArticle(article.getNo());
+        Article updateData = articleService.updateForm(article);
         model.addAttribute("updateData", updateData);
         return "client/article/updateForm";
     }
 
     @PostMapping("/articleUpdate")
     public String articleUpdate(Article article) {
-        Article updateData = articleService.getArticle(article.getNo());
         articleService.articleUpdate(article);
         return "redirect:/article/" + article.getNo();
     }
 
     @PostMapping("/articleDelete")
     public String articleDelete(Article article) {
-        Article deleteData = articleService.getArticle(article.getNo());
         articleService.articleDelete(article);
         return "redirect:/article/articleList";
     }
